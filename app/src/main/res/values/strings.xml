@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">CafeLatte</string>
+    <string name="connect_with_facebook">Entrar con facebook</string>
 </resources>
