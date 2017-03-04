@@ -1,29 +1,200 @@
+buildscript {
+  repositories {
+    jcenter()
+    mavenCentral()
+    maven { url 'https://jitpack.io' }
+    maven { url 'https://maven.fabric.io/public' }
+  }
+
+  dependencies {
+    //noinspection GradleDynamicVersion
+    classpath 'me.tatarka:gradle-retrolambda:3.5.0'
+    classpath 'com.github.ben-manes:gradle-versions-plugin:0.13.0'
+
+    classpath 'io.fabric.tools:gradle:1.22.1'
+    classpath 'io.realm:realm-gradle-plugin:2.3.0'
+  }
+}
+
+repositories {
+  maven { url 'https://maven.fabric.io/public' }
+}
+
 apply plugin: 'com.android.application'
+apply plugin: 'me.tatarka.retrolambda'
+apply plugin: 'com.github.ben-manes.versions'
+apply plugin: 'realm-android'
 
 android {
-  compileSdkVersion 25
-  buildToolsVersion "25.0.2"
+
+  def globalConfiguration = rootProject.extensions.getByName("ext")
+
+  compileSdkVersion globalConfiguration.getAt("androidCompileSdkVersion")
+  buildToolsVersion globalConfiguration.getAt("androidBuildToolsVersion")
+
   defaultConfig {
-    applicationId "cafesolidario.osw.es.cafelatte"
-    minSdkVersion 22
-    targetSdkVersion 25
-    versionCode 1
-    versionName "1.0"
-    testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+    minSdkVersion globalConfiguration.getAt("androidMinSdkVersion")
+    targetSdkVersion globalConfiguration.getAt("androidTargetSdkVersion")
+
+    applicationId globalConfiguration.getAt("androidApplicationId")
+    versionName globalConfiguration.getAt("androidVersionName")
+    versionCode globalConfiguration.getAt("androidVersionCode")
+    multiDexEnabled true
+
+    buildConfigField "String", "CLIENT_NAME", "\"Latte\""
   }
+
+  compileOptions {
+    sourceCompatibility JavaVersion.VERSION_1_8
+    targetCompatibility JavaVersion.VERSION_1_8
+  }
+
+  dexOptions {
+    jumboMode false
+    javaMaxHeapSize "4g"
+  }
+
+  signingConfigs {
+    debug {
+      storeFile file("../config/debug.keystore")
+    }
+
+    release {}
+  }
+
   buildTypes {
     release {
       minifyEnabled false
       proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+
+      signingConfig signingConfigs.release
+
+      buildConfigField "String", "SEGMENT_KEY", "\"ln06A23eiH1o37HiyC9i1Eo1fgyb4ix7\""
+      buildConfigField "boolean", "FABRIC", isFabricEnabled()
+
+      //The base url is fake till we got a real one
+      buildConfigField "String", "BASE_API_URL", "\"https://client.api.cafesolidario.es\""
     }
+
+    debug {
+      signingConfig signingConfigs.debug
+      applicationIdSuffix ".develop"
+
+      buildConfigField "String", "SEGMENT_KEY", "\"ln06A23eiH1o37HiyC9i1Eo1fgyb4ix7\""
+      buildConfigField "boolean", "FABRIC", isFabricEnabled()
+
+      //The base url is fake till we got a real one
+      buildConfigField "String", "BASE_API_URL", "\"https://client.api.cafesolidario.es\""
+    }
+  }
+
+  android {
+
+    dataBinding {
+      enabled = true
+    }
+
+    lintOptions {
+      disable 'MissingTranslation'
+      abortOnError false
+    }
+  }
+
+  compileOptions {
+    sourceCompatibility JavaVersion.VERSION_1_8
+    targetCompatibility JavaVersion.VERSION_1_8
+  }
+
+  packagingOptions {
+    exclude 'META-INF/services/javax.annotation.processing.Processor'
+    exclude 'META-INF/rxjava.properties'
   }
 }
 
 dependencies {
-  compile fileTree(dir: 'libs', include: ['*.jar'])
-  androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
-    exclude group: 'com.android.support', module: 'support-annotations'
-  })
-  compile 'com.android.support:appcompat-v7:25.2.0'
-  testCompile 'junit:junit:4.12'
+
+  def appDependencies = rootProject.ext.appDependencies
+  def appTestDependencies = rootProject.ext.appTestDependencies
+
+  annotationProcessor appDependencies.daggerCompiler
+  annotationProcessor appDependencies.autoValueCompiler
+  annotationProcessor appDependencies.autoValueGsonCompiler
+
+  compile appDependencies.autoValue
+  provided appDependencies.autoValueGson
+  compile appDependencies.dagger
+  compile appDependencies.recyclerView
+  compile appDependencies.javaxAnnotation
+  compile appDependencies.okHttp
+  compile appDependencies.okHttpLogger
+  compile appDependencies.gson
+  compile appDependencies.supportV4
+  compile appDependencies.supportV7
+  compile appDependencies.supportAnnotations
+  compile appDependencies.androidDesign
+  compile appDependencies.cardView
+  compile appDependencies.multidex
+  compile appDependencies.gpsGcm
+  compile appDependencies.gpsAnalytics
+  compile appDependencies.gpsIdentify
+  compile appDependencies.gpsMaps
+  compile appDependencies.gpsLocation
+  compile appDependencies.gpsPlaces
+  compile appDependencies.firebaseCore
+  compile appDependencies.firebaseMessaging
+  compile appDependencies.firebaseRemoteConfig
+  compile appDependencies.guava
+  compile(appDependencies.crashlytics) {
+    transitive = true;
+  }
+
+  compile appDependencies.segmentCore
+  compile(appDependencies.segmentGA) {
+    transitive = true;
+  }
+  compile(appDependencies.segmentFlurry) {
+    transitive = true;
+  }
+  compile(appDependencies.segmentAmplitude) {
+    transitive = true;
+  }
+  compile(appDependencies.segmentLocalytics) {
+    transitive = true;
+  }
+
+  compile appDependencies.calligraphy
+  compile appDependencies.facebook
+  compile appDependencies.rxJava2
+  compile appDependencies.rxAndroid2
+  compile appDependencies.rxBinding
+  compile appDependencies.retrofitRx2
+  compile appDependencies.retrofitGsonConverter
+  compile appDependencies.stetho
+  compile appDependencies.stethoOkHttp
+  compile appDependencies.stethoRealm
+  compile appDependencies.creditCardEntry
+  compile appDependencies.glide
+  compile appDependencies.rxLocation
+  compile appDependencies.rxPermissions
+
+  compile appDependencies.ixjava
+
+  testCompile appDependencies.leakCanaryNoOp
+  testCompile appTestDependencies.junit
+  testCompile appTestDependencies.mockito
+  testCompile appTestDependencies.espresso
+  testCompile appTestDependencies.espressoIntents
+  testCompile appTestDependencies.testingSupportLib
+  testCompile appTestDependencies.supportAnnotations
+  testCompile appTestDependencies.supportTestRunner
+  testCompile appTestDependencies.supportTestRules
+  testCompile appTestDependencies.hamcrest
+  testCompile appTestDependencies.hamcrestLib
+  testCompile appTestDependencies.hamcrestIntegration
+  testCompile appTestDependencies.okHttpMockServer
+}
+
+def isFabricEnabled() {
+  def value = project.getProperties().get("fabric")
+  return value != null ? value : "true"
 }

@@ -1,0 +1,168 @@
+allprojects {
+  repositories {
+    jcenter()
+    mavenCentral()
+    mavenLocal()
+    maven { url 'https://maven.fabric.io/public' }
+    maven { url "https://jitpack.io" }
+    maven { url 'https://github.com/uPhyca/stetho-realm/raw/master/maven-repo' }
+    maven { url 'http://repo.emma.io/emma' }
+    maven { url 'http://maven.localytics.com/public' }
+  }
+}
+
+ext {
+  //Android
+  androidBuildToolsVersion = "25.0.0"
+  androidMinSdkVersion = 16
+  androidTargetSdkVersion = 23
+  androidCompileSdkVersion = 25
+
+  //Libraries
+  daggerVersion = '2.9'
+  butterKnifeVersion = '7.0.1'
+  rxJavaVersion = '1.2.6'
+  rxMathJavaVersion = '0.15.0'
+  rxAndroidVersion = '1.2.1'
+  rxJava2Version = '2.0.6'
+  rxAndroid2Version = '2.0.1'
+  rxJavaInteropVersion = '0.9.0'
+  javaxAnnotationVersion = '1.0'
+  gsonVersion = '2.8.0'
+  okHttpVersion = '3.6.0'
+  androidSupportLibraryVersion = '25.1.1'
+  googlePlayServicesVersion = '10.0.1'
+  fireBaseVersion = '10.0.1'
+  guavaVersion = '20.0'
+  ottoVersion = '1.3.8'
+  picassoVersion = '2.5.2'
+  bottomSheetVersion = '1.3.0'
+  crashlyticsVersion = '2.6.6'
+  segmentVersion = '4.2.6'
+  jodaVersion = '2.9.7'
+  calligraphyVersion = '2.2.0'
+  facebookVersion = '4.19.0'
+  leakCanaryVersion = '1.5'
+  zendeskVersion = '1.5.1.1'
+  retrofitVersion = '2.1.0'
+  slf4jVersion = '1.7.6'
+  logbackVersion = '1.1.1-4'
+  zxingVersion = '3.1.0'
+  stripeVersion = '1.0.4'
+  rxRetrofitVersion = '2.1.0'
+  rx2RetrofitVersion = '1.0.0'
+  rxBindingVersion = '0.4.0'
+  stethoVersion = '1.4.2'
+  stethoRealmVersion = '2.0.0'
+  creditCardEntryVersion = '1.4.7'
+  braintreeVersion = '2.4.1'
+  glideVersion = '3.7.0'
+  emmaVersion = '2.5.+'
+  appsFlyerVersion = '4+'
+  rxLoctionVersion = '0.10'
+  imagePickerVersion = '1.1.3'
+  rxPermissionsVersion = '0.9.1'
+  autoValueVersion = '1.3'
+  autoValueGsonVersion = '0.4.5'
+  fancyprogressbuttonVersion = '1.0.9'
+  ixjavaVersion = '1.0.0-RC5'
+
+
+  //Testing
+  robolectricVersion = '3.0'
+  jUnitVersion = '4.12'
+  assertJVersion = '1.7.1'
+  mockitoVersion = '2.7.0'
+  dexmakerVersion = '1.2'
+  espressoVersion = '2.2.2'
+  testingSupportLibVersion = '0.1'
+  androidSupportRunnerVersion = '0.4.1'
+  androidSupportRulesVersion = '0.4.1'
+  hamcrestVersion = '1.3'
+  jsonUnitVersion = '1.11.0'
+  androidSupportLibraryOverrideTestVersion = '23.0.1'
+
+
+
+  appDependencies = [daggerCompiler       : "com.google.dagger:dagger-compiler:${daggerVersion}",
+                     dagger               : "com.google.dagger:dagger:${daggerVersion}",
+                     butterKnife          : "com.jakewharton:butterknife:${butterKnifeVersion}",
+                     javaxAnnotation      : "javax.annotation:jsr250-api:${javaxAnnotationVersion}",
+                     okHttp               : "com.squareup.okhttp3:okhttp:${okHttpVersion}",
+                     okHttpLogger         : "com.squareup.okhttp3:logging-interceptor:${okHttpVersion}",
+                     gson                 : "com.google.code.gson:gson:${gsonVersion}",
+                     recyclerView         : "com.android.support:recyclerview-v7:${androidSupportLibraryVersion}",
+                     supportV4            : "com.android.support:support-v4:${androidSupportLibraryVersion}",
+                     supportV7            : "com.android.support:appcompat-v7:${androidSupportLibraryVersion}",
+                     supportAnnotations   : "com.android.support:support-annotations:${androidSupportLibraryVersion}",
+                     androidDesign        : "com.android.support:design:${androidSupportLibraryVersion}",
+                     cardView             : "com.android.support:cardview-v7:${androidSupportLibraryVersion}",
+                     multidex             : "com.android.support:multidex:1.0.1",
+                     gpsGcm               : "com.google.android.gms:play-services-gcm:${googlePlayServicesVersion}",
+                     gpsAnalytics         : "com.google.android.gms:play-services-analytics:${googlePlayServicesVersion}",
+                     gpsIdentify          : "com.google.android.gms:play-services-identity:${googlePlayServicesVersion}",
+                     gpsMaps              : "com.google.android.gms:play-services-maps:${googlePlayServicesVersion}",
+                     gpsLocation          : "com.google.android.gms:play-services-location:${googlePlayServicesVersion}",
+                     gpsPlaces            : "com.google.android.gms:play-services-places:${googlePlayServicesVersion}",
+                     firebaseCore         : "com.google.firebase:firebase-core:${fireBaseVersion}",
+                     firebaseMessaging    : "com.google.firebase:firebase-messaging:${fireBaseVersion}",
+                     firebaseInvites      : "com.google.firebase:firebase-invites:${fireBaseVersion}",
+                     firebaseRemoteConfig : "com.google.firebase:firebase-config:${fireBaseVersion}",
+                     guava                : "com.google.guava:guava:${guavaVersion}",
+                     picasso              : "com.squareup.picasso:picasso:${picassoVersion}",
+                     crashlytics          : "com.crashlytics.sdk.android:crashlytics:${crashlyticsVersion}@aar",
+                     segmentCore          : "com.segment.analytics.android:analytics:${segmentVersion}",
+                     segmentGA            : "com.segment.analytics.android.integrations:google-analytics:1.1.2",
+                     segmentFlurry        : "com.segment.analytics.android.integrations:flurry:1.0.0",
+                     segmentLocalytics    : "com.segment.analytics.android.integrations:localytics:1.0.3",
+                     segmentAmplitude     : "com.segment.analytics.android.integrations:amplitude:1.1.1",
+                     joda                 : "joda-time:joda-time:${jodaVersion}",
+                     calligraphy          : "uk.co.chrisjenx:calligraphy:${calligraphyVersion}",
+                     facebook             : "com.facebook.android:facebook-android-sdk:${facebookVersion}",
+                     leakCanary           : "com.squareup.leakcanary:leakcanary-android:${leakCanaryVersion}",
+                     leakCanaryNoOp       : "com.squareup.leakcanary:leakcanary-android-no-op:${leakCanaryVersion}",
+                     rxJava               : "io.reactivex:rxjava:${rxJavaVersion}",
+                     rxAndroid            : "io.reactivex:rxandroid:${rxAndroidVersion}",
+                     rxJava2              : "io.reactivex.rxjava2:rxjava:${rxJava2Version}",
+                     rxAndroid2           : "io.reactivex.rxjava2:rxandroid:${rxAndroid2Version}",
+                     rxJavaInterop        : "com.github.akarnokd:rxjava2-interop:${rxJavaInteropVersion}",
+                     rxMathAndroid        : "com.github.akarnokd:rxjava2-extensions:${rxMathJavaVersion}",
+                     RetrofitRx           : "com.squareup.retrofit2:adapter-rxjava:${rxRetrofitVersion}",
+                     retrofitRx2          : "com.jakewharton.retrofit:retrofit2-rxjava2-adapter:${rx2RetrofitVersion}",
+                     rxBinding            : "com.jakewharton.rxbinding:rxbinding:${rxBindingVersion}",
+                     retrofit             : "com.squareup.retrofit2:retrofit:${retrofitVersion}",
+                     retrofitGsonConverter: "com.squareup.retrofit2:converter-gson:${retrofitVersion}",
+                     stetho               : "com.facebook.stetho:stetho:${stethoVersion}",
+                     stethoOkHttp         : "com.facebook.stetho:stetho-okhttp3:${stethoVersion}",
+                     stethoRealm          : "com.uphyca:stetho_realm:${stethoRealmVersion}",
+                     creditCardEntry      : "com.github.dbachelder:CreditCardEntry:${creditCardEntryVersion}",
+                     glide                : "com.github.bumptech.glide:glide:${glideVersion}",
+                     emma                 : "io.emma:eMMaSDK:${emmaVersion}",
+                     appsFlyer            : "com.appsflyer:af-android-sdk:${appsFlyerVersion}@aar",
+                     rxLocation           : "pl.charmas.android:android-reactive-location:${rxLoctionVersion}@aar",
+                     rxPermissions        : "com.tbruyelle.rxpermissions2:rxpermissions:${rxPermissionsVersion}@aar",
+                     imagePicker          : "com.github.nguyenhoanglam:ImagePicker:${imagePickerVersion}",
+                     autoValue            : "com.google.auto.value:auto-value:${autoValueVersion}",
+                     autoValueCompiler    : "com.google.auto.value:auto-value:${autoValueVersion}",
+                     braintree            : "com.braintreepayments.api:braintree:${braintreeVersion}",
+                     autoValueGson        : "com.ryanharter.auto.value:auto-value-gson:${autoValueGsonVersion}",
+                     autoValueGsonCompiler: "com.ryanharter.auto.value:auto-value-gson:${autoValueGsonVersion}",
+                     fancyprogressbutton  : "com.ekalips.android:fancyprogressbutton:${fancyprogressbuttonVersion}",
+                     ixjava               : "com.github.akarnokd:ixjava:${ixjavaVersion}",]
+
+  appTestDependencies = [junit              : "junit:junit:${jUnitVersion}",
+                         mockito            : "org.mockito:mockito-core:${mockitoVersion}",
+                         dexmakerMockito    : "com.google.dexmaker:dexmaker-mockito:${dexmakerVersion}",
+                         espresso           : "com.android.support.test.espresso:espresso-core:${espressoVersion}",
+                         espressoIntents    : "com.android.support.test.espresso:espresso-intents:${espressoVersion}",
+                         testingSupportLib  : "com.android.support.test:testing-support-lib:${testingSupportLibVersion}",
+                         supportAnnotations : "com.android.support:support-annotations:${androidSupportLibraryVersion}",
+                         supportTestRunner  : "com.android.support.test:runner:${androidSupportRunnerVersion}",
+                         supportTestRules   : "com.android.support.test:rules:${androidSupportRulesVersion}",
+                         hamcrest           : "org.hamcrest:hamcrest-core:${hamcrestVersion}",
+                         hamcrestLib        : "org.hamcrest:hamcrest-library:${hamcrestVersion}",
+                         hamcrestIntegration: "org.hamcrest:hamcrest-integration:${hamcrestVersion}",
+                         okHttpMockServer   : "com.squareup.okhttp3:mockwebserver:${okHttpVersion}",
+
+  ]
+}
