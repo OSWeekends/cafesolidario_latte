@@ -3,6 +3,7 @@
     package="cafesolidario.osw.es.cafelatte">
 
     <application
+        android:name="es.osw.cafelatte.presentation.ui.CoffeeApp"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
@@ -23,6 +24,10 @@
         <meta-data
             android:name="com.facebook.sdk.ApplicationId"
             android:value="@string/facebook_app_id" />
+        <meta-data
+            android:name="io.fabric.ApiKey"
+            android:value="eb4b0c36ef2dc0c3aa1dc1ae5cece3317d38e756" />
+
     </application>
 
 </manifest>

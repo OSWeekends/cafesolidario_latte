@@ -24,6 +24,7 @@ apply plugin: 'com.android.application'
 apply plugin: 'me.tatarka.retrolambda'
 apply plugin: 'com.github.ben-manes.versions'
 apply plugin: 'realm-android'
+apply plugin: 'io.fabric'
 
 android {
 
@@ -176,8 +177,8 @@ dependencies {
   compile appDependencies.glide
   compile appDependencies.rxLocation
   compile appDependencies.rxPermissions
-
   compile appDependencies.ixjava
+  compile 'com.jakewharton.timber:timber:4.5.1'
 
   testCompile appDependencies.leakCanaryNoOp
   testCompile appTestDependencies.junit

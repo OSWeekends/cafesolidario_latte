@@ -16,6 +16,7 @@ import es.osw.cafelatte.presentation.di.base.component.ApplicationComponent;
 import es.osw.cafelatte.presentation.di.base.component.DaggerApplicationComponent;
 import es.osw.cafelatte.presentation.di.base.module.ApplicationModule;
 import io.fabric.sdk.android.Fabric;
+import timber.log.Timber;
 
 public class CoffeeApp extends MultiDexApplication {
   private ApplicationComponent mComponent;
@@ -25,10 +26,17 @@ public class CoffeeApp extends MultiDexApplication {
     MultiDex.install(this);
 
     initializeInjector();
+    initializeLogger();
     initializeFacebook();
     initializeStetho();
     initializeFrabric();
     initializeAnalytics();
+  }
+
+  private void initializeLogger() {
+    if (BuildConfig.DEBUG) {
+      Timber.plant(new Timber.DebugTree());
+    }
   }
 
   public ApplicationComponent getComponent() {
