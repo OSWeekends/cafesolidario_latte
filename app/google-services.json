@@ -1,0 +1,92 @@
+{
+  "project_info": {
+    "project_number": "939959686425",
+    "firebase_url": "https://cafesolidario-73b46.firebaseio.com",
+    "project_id": "cafesolidario-73b46",
+    "storage_bucket": "cafesolidario-73b46.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:939959686425:android:82b23aa0be67eb4d",
+        "android_client_info": {
+          "package_name": "es.osw.cafelatte"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "939959686425-j792f8u22hgvmhllrd0etq78pu5939oj.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "es.osw.cafelatte",
+            "certificate_hash": "075f0b6175e21468141ee5ea22d559c6bebf79d5"
+          }
+        },
+        {
+          "client_id": "939959686425-1unikl9a55st9ok10cnmahkoplguak0e.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDYYRIpiGpjhvdIEvC1-EUlsil8O7R0s8A"
+        },
+        {
+          "current_key": "AIzaSyB1uSDTNMbPrntO5gHSOF-kzoR2hTo7jy8"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "939959686425-1unikl9a55st9ok10cnmahkoplguak0e.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:939959686425:android:8ddfcc4fc8553b33",
+        "android_client_info": {
+          "package_name": "es.osw.cafelatte.develop"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "939959686425-1unikl9a55st9ok10cnmahkoplguak0e.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDYYRIpiGpjhvdIEvC1-EUlsil8O7R0s8A"
+        },
+        {
+          "current_key": "AIzaSyB1uSDTNMbPrntO5gHSOF-kzoR2hTo7jy8"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

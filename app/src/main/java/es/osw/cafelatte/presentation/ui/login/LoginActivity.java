@@ -1,5 +1,7 @@
-package es.osw.cafelatte.presentation.ui.splash;
+package es.osw.cafelatte.presentation.ui.login;
 
+import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import dagger.Component;
@@ -9,8 +11,12 @@ import es.osw.cafelatte.presentation.di.base.module.ActivityModule;
 import es.osw.cafelatte.presentation.ui.BaseActivity;
 import javax.inject.Inject;
 
-public class SplashActivity extends BaseActivity {
-  @Inject SplashViewModel splashViewModel;
+public class LoginActivity extends BaseActivity {
+  @Inject LoginViewModel viewModel;
+
+  public static Intent getCallingIntent(Context context) {
+    return new Intent(context, LoginActivity.class);
+  }
 
   @Override protected void onCreate(@Nullable final Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
@@ -18,7 +24,7 @@ public class SplashActivity extends BaseActivity {
   }
 
   private void inject() {
-    DaggerSplashActivity_SplashComponent.builder()
+    DaggerLoginActivity_LoginComponent.builder()
         .applicationComponent(getApplicationComponent())
         .activityModule(new ActivityModule(this))
         .build()
@@ -27,7 +33,7 @@ public class SplashActivity extends BaseActivity {
 
   @PerActivity
   @Component(dependencies = ApplicationComponent.class, modules = { ActivityModule.class })
-  public interface SplashComponent {
-    void inject(SplashActivity activity);
+  public interface LoginComponent {
+    void inject(LoginActivity activity);
   }
 }

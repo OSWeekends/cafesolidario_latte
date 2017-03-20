@@ -1,13 +1,13 @@
 package es.osw.cafelatte.presentation.analytics;
 
 import android.content.Context;
-import cafesolidario.osw.es.cafelatte.BuildConfig;
 import com.segment.analytics.Analytics;
 import com.segment.analytics.Properties;
 import com.segment.analytics.android.integrations.amplitude.AmplitudeIntegration;
 import com.segment.analytics.android.integrations.flurry.FlurryIntegration;
 import com.segment.analytics.android.integrations.google.analytics.GoogleAnalyticsIntegration;
 import com.segment.analytics.android.integrations.localytics.LocalyticsIntegration;
+import es.osw.cafelatte.BuildConfig;
 import es.osw.cafelatte.domain.analytics.EventMessenger;
 import es.osw.cafelatte.domain.analytics.Transaction;
 import java.math.BigDecimal;

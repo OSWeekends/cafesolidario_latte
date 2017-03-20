@@ -1,6 +1,6 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-
-    package="cafesolidario.osw.es.cafelatte">
+    xmlns:tools="http://schemas.android.com/tools"
+    package="es.osw.cafelatte">
 
     <application
         android:name="es.osw.cafelatte.presentation.ui.CoffeeApp"
@@ -9,11 +9,13 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme">
+        android:theme="@style/AppTheme"
+        tools:replace="android:supportsRtl">
 
         <activity
             android:name="es.osw.cafelatte.presentation.ui.splash.SplashActivity"
-            android:screenOrientation="portrait">
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.Splash">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -21,12 +23,23 @@
             </intent-filter>
         </activity>
 
-        <meta-data
-            android:name="com.facebook.sdk.ApplicationId"
-            android:value="@string/facebook_app_id" />
+        <activity
+            android:name="es.osw.cafelatte.presentation.ui.login.LoginActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.Translucent" />
+
+        <activity
+            android:name="es.osw.cafelatte.presentation.ui.home.HomeActivity"
+            android:screenOrientation="portrait" />
+
+        <!--<meta-data-->
+        <!--android:name="com.facebook.sdk.ApplicationId"-->
+        <!--android:value="@string/facebook_app_id" />-->
+
         <meta-data
             android:name="io.fabric.ApiKey"
-            android:value="eb4b0c36ef2dc0c3aa1dc1ae5cece3317d38e756" />
+            android:value="eb4b0c36ef2dc0c3aa1dc1ae5cece3317d38e756"
+            tools:replace="android:value" />
 
     </application>
 

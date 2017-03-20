@@ -6,12 +6,12 @@ import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import cafesolidario.osw.es.cafelatte.R;
 import com.facebook.CallbackManager;
 import com.facebook.FacebookCallback;
 import com.facebook.FacebookException;
 import com.facebook.login.LoginManager;
 import com.facebook.login.LoginResult;
+import es.osw.cafelatte.R;
 import es.osw.cafelatte.presentation.ui.BaseFragment;
 import java.util.Arrays;
 

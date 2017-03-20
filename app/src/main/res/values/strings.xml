@@ -1,4 +1,8 @@
 <resources>
     <string name="app_name">CafeLatte</string>
     <string name="connect_with_facebook">Entrar con facebook</string>
+
+    <string name="facebook_application_id" translatable="false">1328756377167920</string>
+    <!-- Facebook Application ID, prefixed by 'fb'.  Enables Chrome Custom tabs. -->
+    <string name="facebook_login_protocol_scheme" translatable="false">fb1328756377167920</string>
 </resources>

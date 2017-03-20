@@ -2,12 +2,12 @@ package es.osw.cafelatte.presentation.ui;
 
 import android.support.multidex.MultiDex;
 import android.support.multidex.MultiDexApplication;
-import cafesolidario.osw.es.cafelatte.BuildConfig;
 import com.crashlytics.android.Crashlytics;
 import com.crashlytics.android.core.CrashlyticsCore;
 import com.facebook.appevents.AppEventsLogger;
 import com.facebook.stetho.Stetho;
 import com.uphyca.stetho_realm.RealmInspectorModulesProvider;
+import es.osw.cafelatte.BuildConfig;
 import es.osw.cafelatte.domain.analytics.EventsTracker;
 import es.osw.cafelatte.presentation.analytics.CrashlyticsEventTracker;
 import es.osw.cafelatte.presentation.analytics.FirebaseEventTracker;
@@ -16,6 +16,7 @@ import es.osw.cafelatte.presentation.di.base.component.ApplicationComponent;
 import es.osw.cafelatte.presentation.di.base.component.DaggerApplicationComponent;
 import es.osw.cafelatte.presentation.di.base.module.ApplicationModule;
 import io.fabric.sdk.android.Fabric;
+import rx_activity_result2.RxActivityResult;
 import timber.log.Timber;
 
 public class CoffeeApp extends MultiDexApplication {
@@ -24,6 +25,7 @@ public class CoffeeApp extends MultiDexApplication {
   @Override public void onCreate() {
     super.onCreate();
     MultiDex.install(this);
+    RxActivityResult.register(this);
 
     initializeInjector();
     initializeLogger();
