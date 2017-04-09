@@ -5,4 +5,13 @@
     <string name="facebook_application_id" translatable="false">1328756377167920</string>
     <!-- Facebook Application ID, prefixed by 'fb'.  Enables Chrome Custom tabs. -->
     <string name="facebook_login_protocol_scheme" translatable="false">fb1328756377167920</string>
+    <string name="home">Inicio</string>
+    <string name="open_drawer">Abrir menú</string>
+    <string name="close_drawer">Cerrar menú</string>
+    <string name="payment_methods">Métodos de pago</string>
+    <string name="add_payment_method">Añade tu método de pago</string>
+    <string name="save">Guardar</string>
+    <string name="scan_with_card_io">Escanear tarjeta</string>
+    <string name="name">Nombre</string>
+    <string name="log_out">Salir</string>
 </resources>

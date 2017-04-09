@@ -30,7 +30,7 @@ ext {
   javaxAnnotationVersion = '1.0'
   gsonVersion = '2.8.0'
   okHttpVersion = '3.6.0'
-  androidSupportLibraryVersion = '25.1.1'
+  androidSupportLibraryVersion = '25.3.0'
   googlePlayServicesVersion = '10.2.0'
   fireBaseVersion = '10.2.0'
   guavaVersion = '20.0'
@@ -66,7 +66,12 @@ ext {
   autoValueGsonVersion = '0.4.5'
   fancyprogressbuttonVersion = '1.0.9'
   ixjavaVersion = '1.0.0-RC5'
-
+  timberVersion = '4.5.1'
+  firebaseAuthVersion = '1.2.0'
+  rxActivityResultVersion = '0.4.1-2.x'
+  braintreeCardVersion = '3.0.5'
+  sqlBriteVersion = '1.1.1'
+  paperParcelVersion = '2.0.1'
 
   //Testing
   robolectricVersion = '3.0'
@@ -148,7 +153,16 @@ ext {
                      autoValueGson        : "com.ryanharter.auto.value:auto-value-gson:${autoValueGsonVersion}",
                      autoValueGsonCompiler: "com.ryanharter.auto.value:auto-value-gson:${autoValueGsonVersion}",
                      fancyprogressbutton  : "com.ekalips.android:fancyprogressbutton:${fancyprogressbuttonVersion}",
-                     ixjava               : "com.github.akarnokd:ixjava:${ixjavaVersion}",]
+                     ixjava               : "com.github.akarnokd:ixjava:${ixjavaVersion}",
+                     kotlin               : "org.jetbrains.kotlin:kotlin-stdlib-jre7:$kotlin_version",
+                     timber               : "com.jakewharton.timber:timber:${timberVersion}",
+                     firebaseAuthUI       : "com.firebaseui:firebase-ui-auth:${firebaseAuthVersion}",
+                     rxActivityResult     : "com.github.VictorAlbertos:RxActivityResult:${rxActivityResultVersion}",
+                     braintreeCard        : "com.braintreepayments:card-form:${braintreeCardVersion}",
+                     sqlBrite             : "com.squareup.sqlbrite:sqlbrite:${sqlBriteVersion}",
+                     databindingCompiler  : "com.android.databinding:compiler:$android_gradle_version",
+                     paperParcelCompiler  : "nz.bradcampbell:paperparcel-compiler:${paperParcelVersion}",
+                     paperParcel          : "nz.bradcampbell:paperparcel:${paperParcelVersion}",]
 
   appTestDependencies = [junit              : "junit:junit:${jUnitVersion}",
                          mockito            : "org.mockito:mockito-core:${mockitoVersion}",

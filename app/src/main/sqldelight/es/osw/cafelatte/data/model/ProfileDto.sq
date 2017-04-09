@@ -1,0 +1,23 @@
+CREATE TABLE profile_dto (
+  _id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
+  name TEXT,
+  email TEXT NOT NULL,
+  image TEXT
+);
+
+-- Further SQL statements are proceeded by an identifier.
+
+select_all:
+SELECT *
+FROM profile_dto;
+
+select_by_email:
+SELECT *
+FROM profile_dto WHERE email IS ?;
+
+insert_row:
+INSERT INTO profile_dto(name, email, image)
+VALUES (?, ?, ?);
+
+clear:
+DELETE FROM profile_dto;

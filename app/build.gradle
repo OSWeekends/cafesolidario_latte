@@ -14,18 +14,24 @@ buildscript {
     classpath 'io.fabric.tools:gradle:1.22.1'
     classpath 'io.realm:realm-gradle-plugin:2.3.0'
     classpath 'com.google.gms:google-services:3.0.0'
+    classpath 'com.squareup.sqldelight:gradle-plugin:0.6.1'
   }
 }
 
 repositories {
   maven { url 'https://maven.fabric.io/public' }
+  mavenCentral()
 }
 
 apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
 apply plugin: 'me.tatarka.retrolambda'
 apply plugin: 'com.github.ben-manes.versions'
 apply plugin: 'realm-android'
 apply plugin: 'io.fabric'
+apply plugin: 'kotlin-kapt'
+apply plugin: 'com.squareup.sqldelight'
 
 android {
 
@@ -118,10 +124,13 @@ dependencies {
   def appDependencies = rootProject.ext.appDependencies
   def appTestDependencies = rootProject.ext.appTestDependencies
 
-  annotationProcessor appDependencies.daggerCompiler
-  annotationProcessor appDependencies.autoValueCompiler
-  annotationProcessor appDependencies.autoValueGsonCompiler
+  kapt appDependencies.daggerCompiler
+  kapt appDependencies.autoValueCompiler
+  kapt appDependencies.autoValueGsonCompiler
+  kapt appDependencies.databindingCompiler
+  kapt appDependencies.paperParcelCompiler
 
+  compile appDependencies.paperParcel
   compile appDependencies.autoValue
   provided appDependencies.autoValueGson
   compile appDependencies.dagger
@@ -168,6 +177,7 @@ dependencies {
   compile appDependencies.facebook
   compile appDependencies.rxJava2
   compile appDependencies.rxAndroid2
+  compile appDependencies.rxJavaInterop
   compile appDependencies.rxBinding
   compile appDependencies.retrofitRx2
   compile appDependencies.retrofitGsonConverter
@@ -179,9 +189,13 @@ dependencies {
   compile appDependencies.rxLocation
   compile appDependencies.rxPermissions
   compile appDependencies.ixjava
-  compile 'com.jakewharton.timber:timber:4.5.1'
-  compile 'com.firebaseui:firebase-ui-auth:1.2.0'
-  compile 'com.github.VictorAlbertos:RxActivityResult:0.4.1-2.x'
+  compile appDependencies.joda
+  compile appDependencies.kotlin
+  compile appDependencies.timber
+  compile appDependencies.firebaseAuthUI
+  compile appDependencies.rxActivityResult
+  compile appDependencies.braintreeCard
+  compile appDependencies.sqlBrite
 
   testCompile appDependencies.leakCanaryNoOp
   testCompile appTestDependencies.junit
@@ -196,6 +210,10 @@ dependencies {
   testCompile appTestDependencies.hamcrestLib
   testCompile appTestDependencies.hamcrestIntegration
   testCompile appTestDependencies.okHttpMockServer
+}
+
+kapt {
+  generateStubs = true
 }
 
 def isFabricEnabled() {
